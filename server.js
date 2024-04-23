@@ -6,17 +6,19 @@ const cors = require("cors");//allows to receive requests on cross-origins
 const ConnectToDb = require("./config/connectToDb");//This pulls our Mongoose(MongoDB) connection into the application
 const notesRouter = require("./routes/notes");
 const candyRouter = require("./routes/candy");
-// const Note = require("./models/note");
-// const Candy = require("./models/candy");
-// const notesController = require("./controllers/notesControllers");
-// const candyController = require("./controllers/candyControllers");
-const studentController = require("./controllers/studentControllers");
+const studentRouter = require("./routes/student");
+// const Note = require("./models/note");  //moved the model and imported to the corresponding controller file
+// const Candy = require("./models/candy");  //moved the model and imported to the corresponding controller file
+// const notesController = require("./controllers/notesControllers");  //moved controllers to the corresponding routes file
+// const candyController = require("./controllers/candyControllers"); //moved controllers to the corresponding routes file
+// const studentController = require("./controllers/studentControllers"); //moved controllers to the corresponding routes file
 
 app.use(cors());//use as middleware
 app.use(express.json({extended: true}));//express doesn't convert to JSON naturally
 app.use(express.urlencoded({extended: true}))
 app.use("/notes", notesRouter);
 app.use("/candies", candyRouter);
+app.use("/students", studentRouter);
 
 ConnectToDb(); //This initializes our connectToDb function from the config folder
 //---------------> Database Connection
@@ -31,15 +33,7 @@ app.get("/",(req,res)=>{
 
 
 
-app.get("/students", studentController.fetchAllStudents);
 
-app.get("/students/:id", studentController.fetchStudent);
-
-app.post("/students", studentController.createStudent);
-
-app.put("/students/:id", studentController.updateStudent);
-
-app.delete("/students/:id", studentController.deleteStudent); 
 
 
 
