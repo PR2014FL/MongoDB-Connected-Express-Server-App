@@ -8,7 +8,7 @@ const ConnectToDb = require("./config/connectToDb");//This pulls our Mongoose(Mo
 // const Candy = require("./models/candy");
 const notesController = require("./controllers/notesControllers");
 const candyController = require("./controllers/candyControllers");
-
+const studentController = require("./controllers/studentControllers");
 
 app.use(cors());//use as middleware
 app.use(express.json({extended: true}));//express doesn't convert to JSON naturally
@@ -58,6 +58,15 @@ app.delete("/candies/:id", candyController.deleteCandy);
 //deleteCandy
 
 
+app.get("/students", studentController.fetchAllStudents);
+
+app.get("/students/:id", studentController.fetchStudent);
+
+app.post("/students", studentController.createStudent);
+
+app.put("/students/:id", studentController.updateStudent);
+
+app.delete("/students/:id", studentController.deleteStudent); 
 
 
 

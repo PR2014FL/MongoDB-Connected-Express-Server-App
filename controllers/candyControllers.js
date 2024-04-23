@@ -1,15 +1,15 @@
 const Candy = require("../models/candy");
 
 const fetchAllCandies = async (req, res) => {
-  const candy = await Candy.find();
+  const candy = await Candy.find({});
   res.json({ candies: candy });
-};
+}
 
 const fetchOneCandy = async (req, res) => {
   const candyId = req.params.id;
   const candy = await Candy.findById(candyId);
   res.json({ candies: candy });
-};
+}
 
 const createCandy = async (req, res) => {
   console.log(`BODY: ${req.body}`);
@@ -18,10 +18,10 @@ const createCandy = async (req, res) => {
 
   const candy = await Candy.create({
     kind: kind,
-    flavor: flavor,
+    flavor: flavor
   });
   res.json({ candies: candy });
-};
+}
 
 const updateCandy = async (req, res) => {
   const candyId = req.params.id;
@@ -32,7 +32,7 @@ const updateCandy = async (req, res) => {
   });
   const updateCandy = await Candy.findById(candyId);
   res.json({ candies: updateCandy });
-};
+}
 
 const deleteCandy = async (req, res) => {
   const candyId = req.params.id;
@@ -43,7 +43,7 @@ const deleteCandy = async (req, res) => {
     console.error(error);
     res.status(500).send({ Error: "Failed to delete record." });
   }
-};
+}
 
 module.exports = {
   fetchAllCandies,

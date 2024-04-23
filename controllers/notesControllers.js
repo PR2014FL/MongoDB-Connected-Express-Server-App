@@ -3,7 +3,7 @@ const Note = require("../models/note");
 const fetchAllNotes = async(req, res)=>{
     //1. Get all notes from the database
     //2. Send the notes back as a response
-    const note = await Note.find();
+    const note = await Note.find({});
     //-----------------------------(1)
     res.json({notes: note})
     //--------------------------(2)
@@ -66,7 +66,7 @@ const deleteNote = async(req, res) => {
     await Note.deleteOne({
         _id: noteId
     });
-    res.json({success: "Record has been deleted successfully"})
+    res.send({Success: "Record has been deleted."})
 }
 
 module.exports = {
