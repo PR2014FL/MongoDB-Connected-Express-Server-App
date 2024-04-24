@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-//-----vvvvvv----------------
-const candySchema = new mongoose.Schema({//set the schema
+
+const candySchema = new mongoose.Schema({
     kind: String,
     flavor: String
 });
 
-const Candy = mongoose.model("Candy", candySchema); //this is the model
+const Candy = mongoose.model("Candy", candySchema); 
 
 module.exports = Candy;

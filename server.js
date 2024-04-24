@@ -21,9 +21,7 @@ app.use("/candies", candyRouter);
 app.use("/students", studentRouter);
 
 ConnectToDb(); //This initializes our connectToDb function from the config folder
-//---------------> Database Connection
-// -------------------------------------------------reQs
-// -------------------------------------------------Routing
+
 app.get("/",(req,res)=>{
     res.send("This is a Landing Page")
 });

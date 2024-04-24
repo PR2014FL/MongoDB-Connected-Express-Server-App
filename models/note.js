@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//-----vvvvvv----------------
+
 const noteSchema = new mongoose.Schema({//set the schema
     title: String,
     body: String
