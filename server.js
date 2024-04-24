@@ -7,12 +7,12 @@ const ConnectToDb = require("./config/connectToDb");//This pulls our Mongoose(Mo
 const notesRouter = require("./routes/notes");
 const candyRouter = require("./routes/candy");
 const studentRouter = require("./routes/student");
+//Separation of concerns: Models > Controller > Router > Main Server JS file
 // const Note = require("./models/note");  //moved the model and imported to the corresponding controller file
 // const Candy = require("./models/candy");  //moved the model and imported to the corresponding controller file
 // const notesController = require("./controllers/notesControllers");  //moved controllers to the corresponding routes file
 // const candyController = require("./controllers/candyControllers"); //moved controllers to the corresponding routes file
 // const studentController = require("./controllers/studentControllers"); //moved controllers to the corresponding routes file
-
 app.use(cors());//use as middleware
 app.use(express.json({extended: true}));//express doesn't convert to JSON naturally
 app.use(express.urlencoded({extended: true}))
@@ -24,20 +24,9 @@ ConnectToDb(); //This initializes our connectToDb function from the config folde
 //---------------> Database Connection
 // -------------------------------------------------reQs
 // -------------------------------------------------Routing
-
-
 app.get("/",(req,res)=>{
     res.send("This is a Landing Page")
 });
-
-
-
-
-
-
-
-
-
 
 app.listen(PORT, () => {
     console.log(`Express sevrer listening on port num ${PORT}`)
